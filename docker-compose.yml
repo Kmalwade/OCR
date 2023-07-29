@@ -1,0 +1,17 @@
+version: '3'
+services:
+ web:
+   image: testing_assignmnet:assignment_0.0.1
+   environment:
+     - POSTGRES_HOST: your_postgres_host
+     - POSTGRES_USER: your_postgres_user
+     - POSTGRES_PASSWORD: your_postgres_password
+     - POSTGRES_DB: your_database_name
+   volumes:
+     - .:/code
+   ports:
+     - "8000:8000"
+ celery:
+    depends_on:
+      - db
+      - rabbitmq
